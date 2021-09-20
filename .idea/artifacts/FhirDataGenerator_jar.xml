@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="FhirDataGenerator.jar">
+    <output-path>$PROJECT_DIR$/out/production/FhirDataGenerator/target/FhirDataGenerator_jar</output-path>
+    <root id="archive" name="FhirDataGenerator.jar">
+      <element id="module-output" name="FhirDataGenerator" />
+    </root>
+  </artifact>
+</component>
