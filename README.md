@@ -2,7 +2,7 @@
  A Java application to generate Fhir data for the nessesary SmICS templates.
  
  
- Run the jar file "FhirDataGenerator.jar" inside the "out/production/FhirDataGenerator" directory with the following command:
+ Run the jar file "FhirDataGenerator.jar" inside the "out/production/FhirDataGenerator/target/FhirDataGenerator_jar" directory with the following command:
  
  java -jar FhirDataGenerator.jar
  
