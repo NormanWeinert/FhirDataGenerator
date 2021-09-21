@@ -1,10 +1,14 @@
 package Templates;
 
 import Generator.BasicWriteCommands;
+import Templates.VirologischerBefundRescources.VirologischerBefundDiagnosticReport;
+import Templates.VirologischerBefundRescources.VirologischerBefundObservation;
+import Templates.VirologischerBefundRescources.VirologischerBefundSpecimen;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+
 
 public class VirologischerBefund {
 
@@ -14,44 +18,48 @@ public class VirologischerBefund {
 
         BufferedWriter writer = new BufferedWriter(NewTemplate);
 
+        BasicWriteCommands.Open(writer);
 
         CreateBundleHeader(writer);
-        CreateObservation(writer);
+
+        VirologischerBefundObservation.CreateObservation(writer);
+        VirologischerBefundDiagnosticReport.CreateDiagnosticReport(writer);
+        VirologischerBefundSpecimen.CreateSpecimen(writer);
+
+        BasicWriteCommands.Indents(writer,1);
+        BasicWriteCommands.CloseField(writer);
+
+        BasicWriteCommands.Close(writer);
 
         writer.close();
+
+
     }
 
     private void CreateBundleHeader (BufferedWriter writer) throws IOException {
-        BasicWriteCommands.Open(writer);
-        BasicWriteCommands.indent(writer);
+
+        BasicWriteCommands.Indents(writer,1);
         writer.write("\"resourceType\": \"Bundle\",");
         writer.newLine();
-        BasicWriteCommands.indent(writer);
+        BasicWriteCommands.Indents(writer,1);
         writer.write("\"id\": \"bundle-transaction-vb\",");
         writer.newLine();
-        BasicWriteCommands.indent(writer);
+        BasicWriteCommands.Indents(writer,1);
         writer.write("\"meta\": {");
         writer.newLine();
-        BasicWriteCommands.twoindents(writer);
+        BasicWriteCommands.Indents(writer,2);
         writer.write("\"lastUpdated\": \"2021-05-28T05:33:00Z\"");
         writer.newLine();
-        BasicWriteCommands.indent(writer);
+        BasicWriteCommands.Indents(writer,1);
         BasicWriteCommands.CloseAndContinue(writer);
-        BasicWriteCommands.indent(writer);
+        BasicWriteCommands.Indents(writer,1);
         writer.write("\"type\": \"transaction\",");
         writer.newLine();
-        BasicWriteCommands.indent(writer);
+        BasicWriteCommands.Indents(writer,1);
         writer.write("\"entry\": [");
         writer.newLine();
     }
 
-    private void CreateObservation (BufferedWriter writer) throws IOException {
-        BasicWriteCommands.twoindents(writer);
-        BasicWriteCommands.Open(writer);
-        BasicWriteCommands.threeindents(writer);
-        writer.write("\"fullUrl\": \"urn:uuid:61ebe359-bfdc-4613-8bf2-c5e300945f0a\",");
-        writer.newLine();
-        BasicWriteCommands.threeindents(writer);
-    }
+
 
 }

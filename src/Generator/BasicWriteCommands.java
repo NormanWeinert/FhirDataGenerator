@@ -30,15 +30,9 @@ public class BasicWriteCommands {
         writer.newLine();
     }
 
-    public static void indent (BufferedWriter writer) throws IOException {
-        writer.write("    ");
-    }
-
-    public static void twoindents (BufferedWriter writer) throws IOException {
-        writer.write("        ");
-    }
-
-    public static void threeindents (BufferedWriter writer) throws IOException {
-        writer.write("            ");
+    public static void Indents(BufferedWriter writer, int amount) throws IOException {
+        for (int i = 1; i <= amount; i++){
+            writer.write("    ");
+        }
     }
 }
