@@ -1,5 +1,6 @@
 package Generator;
 
+import Templates.Impfstatus;
 import Templates.VirologischerBefund;
 
 import java.io.BufferedReader;
@@ -19,9 +20,11 @@ public class DataGenerator {
         int number;
 
         VirologischerBefund VirologischerBefund = new VirologischerBefund();
+        Impfstatus Impfstatus = new Impfstatus();
 
         for (number = 1; number <= amount; number++){
             VirologischerBefund.CreateVirologischerBefundRescource(number);
+            Impfstatus.CreateImpfstatusRescource(number);
         }
 
     }
