@@ -1,4 +1,4 @@
-package Templates.VirologischerBefundRescources;
+package Templates.VirologischerBefundResources;
 
 import Generator.BasicWriteCommands;
 
@@ -6,9 +6,9 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class VirologischerBefundSpecimen {
+public class VirologischerBefundDiagnosticReport {
 
-    public static void CreateSpecimen (BufferedWriter writer) throws IOException {
+    public static void CreateDiagnosticReport (BufferedWriter writer) throws IOException {
 
         /**
          * Header
@@ -16,13 +16,13 @@ public class VirologischerBefundSpecimen {
         BasicWriteCommands.Indents(writer,2);
         BasicWriteCommands.Open(writer);
         BasicWriteCommands.Indents(writer,3);
-        writer.write("\"fullUrl\": \"urn:uuid:61ebe359-bfdc-4613-8bf2-c5e300945f04\",");
+        writer.write("\"fullUrl\": \"urn:uuid:61ebe359-bfdc-4613-8bf2-c5e300945f01\",");
         writer.newLine();
         BasicWriteCommands.Indents(writer,3);
         writer.write("\"resource\": {");
         writer.newLine();
         BasicWriteCommands.Indents(writer,4);
-        writer.write("\"resourceType\": \"Specimen\",");
+        writer.write("\"resourceType\": \"DiagnosticReport\",");
         writer.newLine();
         BasicWriteCommands.Indents(writer,4);
         writer.write("\"meta\": {");
@@ -31,7 +31,7 @@ public class VirologischerBefundSpecimen {
         writer.write("\"profile\": [");
         writer.newLine();
         BasicWriteCommands.Indents(writer,6);
-        writer.write("\"http://hl7.org/fhir/StructureDefinition/Specimen\"");
+        writer.write("\"http://highmed.org/fhir/StructureDefinition/ic/DiagnosticReportLab\"");
         writer.newLine();
         BasicWriteCommands.Indents(writer,5);
         BasicWriteCommands.CloseField(writer);
@@ -39,30 +39,55 @@ public class VirologischerBefundSpecimen {
         BasicWriteCommands.CloseAndContinue(writer);
 
         /**
-         * AccessionIdentifier
+         * Identifier
          */
         BasicWriteCommands.Indents(writer,4);
-        writer.write("\"accessionIdentifier\": {");
+        writer.write("\"identifier\": [");
         writer.newLine();
         BasicWriteCommands.Indents(writer,5);
-        writer.write("\"assigner\": {");
+        BasicWriteCommands.Open(writer);
+        BasicWriteCommands.Indents(writer,6);
+        writer.write("\"system\": \"urn:ietf:rfc:4122\",");
         writer.newLine();
         BasicWriteCommands.Indents(writer,6);
-        writer.write("\"display\": \"DISPLAY\"");
-        writer.newLine();
-        BasicWriteCommands.Indents(writer,5);
-        BasicWriteCommands.CloseAndContinue(writer);
-        BasicWriteCommands.Indents(writer,5);
-        writer.write("\"id\": \"ID\",");
-        writer.newLine();
-        BasicWriteCommands.Indents(writer,5);
-        writer.write("\"type\": {");
-        writer.newLine();
-        BasicWriteCommands.Indents(writer,6);
-        writer.write("\"text\": \"URI\"");
+        writer.write("\"value\": \"{{patientId}}\"");
         writer.newLine();
         BasicWriteCommands.Indents(writer,5);
         BasicWriteCommands.Close(writer);
+        BasicWriteCommands.Indents(writer,4);
+        BasicWriteCommands.CloseAndContinueField(writer);
+
+        /**
+         * Status
+         */
+        BasicWriteCommands.Indents(writer,4);
+        DiagnosticReportStatus(writer);
+        writer.newLine();
+
+        /**
+         * Code
+         */
+        BasicWriteCommands.Indents(writer,4);
+        writer.write("\"code\": {");
+        writer.newLine();
+        BasicWriteCommands.Indents(writer,5);
+        writer.write("\"coding\": [");
+        writer.newLine();
+        BasicWriteCommands.Indents(writer,6);
+        BasicWriteCommands.Open(writer);
+        BasicWriteCommands.Indents(writer,7);
+        writer.write("\"system\": \"http://loinc.org\",");
+        writer.newLine();
+        BasicWriteCommands.Indents(writer,7);
+        writer.write("\"code\": \"11502-2\",");
+        writer.newLine();
+        BasicWriteCommands.Indents(writer,7);
+        writer.write("\"display\": \"Laboratory report\"");
+        writer.newLine();
+        BasicWriteCommands.Indents(writer,6);
+        BasicWriteCommands.Close(writer);
+        BasicWriteCommands.Indents(writer,5);
+        BasicWriteCommands.CloseField(writer);
         BasicWriteCommands.Indents(writer,4);
         BasicWriteCommands.CloseAndContinue(writer);
 
@@ -87,32 +112,32 @@ public class VirologischerBefundSpecimen {
         BasicWriteCommands.CloseAndContinue(writer);
 
         /**
-         * Collection
+         * Encounter
          */
         BasicWriteCommands.Indents(writer,4);
-        writer.write("\"collection\": {");
+        writer.write("\"encounter\": {");
         writer.newLine();
         BasicWriteCommands.Indents(writer,5);
-        writer.write("\"collectedDateTime\" : \"2011-08-16T06:15:00Z\",");
+        writer.write("\"reference\": \"http://external.fhir.server/Encounter/555\"");
+        writer.newLine();
+        BasicWriteCommands.Indents(writer,4);
+        BasicWriteCommands.CloseAndContinue(writer);
+
+        /**
+         * Result
+         */
+        BasicWriteCommands.Indents(writer,4);
+        writer.write("\"result\": [");
         writer.newLine();
         BasicWriteCommands.Indents(writer,5);
-        writer.write("\"bodySite\": {");
-        writer.newLine();
-        BasicWriteCommands.Indents(writer,6);
-        writer.write("\"coding\": [");
-        writer.newLine();
-        BasicWriteCommands.Indents(writer,7);
         BasicWriteCommands.Open(writer);
-        NameDerKoerperstelle(writer);
-        writer.newLine();
-        BasicWriteCommands.Indents(writer,7);
-        BasicWriteCommands.Close(writer);
         BasicWriteCommands.Indents(writer,6);
-        BasicWriteCommands.CloseField(writer);
+        writer.write("\"reference\": \"Observation/1\"");
+        writer.newLine();
         BasicWriteCommands.Indents(writer,5);
         BasicWriteCommands.Close(writer);
         BasicWriteCommands.Indents(writer,4);
-        BasicWriteCommands.Close(writer);
+        BasicWriteCommands.CloseField(writer);
 
         /**
          * Close Rescource
@@ -130,7 +155,7 @@ public class VirologischerBefundSpecimen {
         writer.write("\"method\": \"POST\",");
         writer.newLine();
         BasicWriteCommands.Indents(writer,4);
-        writer.write("\"url\": \"Specimen\"");
+        writer.write("\"url\": \"DiagnosticReport\"");
         writer.newLine();
         BasicWriteCommands.Indents(writer,3);
         BasicWriteCommands.Close(writer);
@@ -139,65 +164,46 @@ public class VirologischerBefundSpecimen {
          * Close Entry
          */
         BasicWriteCommands.Indents(writer,2);
-        BasicWriteCommands.Close(writer);
+        BasicWriteCommands.CloseAndContinue(writer);
 
     }
 
-    private static void NameDerKoerperstelle (BufferedWriter writer) throws IOException {
+    private static void DiagnosticReportStatus (BufferedWriter writer) throws IOException {
 
-        BasicWriteCommands.Indents(writer,8);
-
-        int randomNum = ThreadLocalRandom.current().nextInt(1, 8 + 1);
+        int randomNum = ThreadLocalRandom.current().nextInt(1, 10 + 1);
 
         switch (randomNum) {
             case 1:
-                writer.write("\"code\": \"367592002\",");
-                writer.newLine();
-                BasicWriteCommands.Indents(writer,8);
-                writer.write("\"display\": \"Structure of posterior nasopharynx (body structure)\"");
+                writer.write("\"status\": \"registered\",");
                 break;
             case 2:
-                writer.write("\"code\": \"12999009\",");
-                writer.newLine();
-                BasicWriteCommands.Indents(writer,8);
-                writer.write("\"display\": \"Structure of posterior wall of oropharynx (body structure)\"");
+                writer.write("\"status\": \"partial\",");
                 break;
             case 3:
-                writer.write("\"code\": \"700016008\",");
-                writer.newLine();
-                BasicWriteCommands.Indents(writer,8);
-                writer.write("\"display\": \"Structure of internal part of mouth (body structure)\"");
+                writer.write("\"status\": \"preliminary\",");
                 break;
             case 4:
-                writer.write("\"code\": \"44567001\",");
-                writer.newLine();
-                BasicWriteCommands.Indents(writer,8);
-                writer.write("\"display\": \"Tracheal structure (body structure)\"");
+                writer.write("\"status\": \"final\",");
                 break;
             case 5:
-                writer.write("\"code\": \"82094008\",");
-                writer.newLine();
-                BasicWriteCommands.Indents(writer,8);
-                writer.write("\"display\": \"Lower respiratory tract structure (body structure)\"");
+                writer.write("\"status\": \"amended\",");
                 break;
             case 6:
-                writer.write("\"code\": \"91724006\",");
-                writer.newLine();
-                BasicWriteCommands.Indents(writer,8);
-                writer.write("\"display\": \"Tracheobronchial structure (body structure)\"");
+                writer.write("\"status\": \"corrected\",");
                 break;
             case 7:
-                writer.write("\"code\": \"955009\",");
-                writer.newLine();
-                BasicWriteCommands.Indents(writer,8);
-                writer.write("\"display\": \"Bronchial structure (body structure)\"");
+                writer.write("\"status\": \"appended\",");
                 break;
             case 8:
-                writer.write("\"code\": \"113253006\",");
-                writer.newLine();
-                BasicWriteCommands.Indents(writer,8);
-                writer.write("\"display\": \"Pulmonary alveolar structure (body structure)\"");
+                writer.write("\"status\": \"cancelled\",");
+                break;
+            case 9:
+                writer.write("\"status\": \"entered-in-error\",");
+                break;
+            case 10:
+                writer.write("\"status\": \"unknown\",");
                 break;
         }
     }
+
 }

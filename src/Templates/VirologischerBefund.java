@@ -1,9 +1,9 @@
 package Templates;
 
 import Generator.BasicWriteCommands;
-import Templates.VirologischerBefundRescources.VirologischerBefundDiagnosticReport;
-import Templates.VirologischerBefundRescources.VirologischerBefundObservation;
-import Templates.VirologischerBefundRescources.VirologischerBefundSpecimen;
+import Templates.VirologischerBefundResources.VirologischerBefundDiagnosticReport;
+import Templates.VirologischerBefundResources.VirologischerBefundObservation;
+import Templates.VirologischerBefundResources.VirologischerBefundSpecimen;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

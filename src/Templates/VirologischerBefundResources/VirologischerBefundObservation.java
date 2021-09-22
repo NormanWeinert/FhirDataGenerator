@@ -1,4 +1,4 @@
-package Templates.VirologischerBefundRescources;
+package Templates.VirologischerBefundResources;
 
 import Generator.BasicWriteCommands;
 
