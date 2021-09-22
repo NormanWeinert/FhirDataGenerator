@@ -15,3 +15,5 @@
  Currently supported Templates:
  
  - Virologischer Befund
+ - Impfstatus
+ - PatientenAufenthalt
