@@ -1,27 +1,26 @@
 package Templates;
 
 import Generator.BasicWriteCommands;
-import Templates.PatientenAufenthaltResources.Hospitalization;
-import Templates.PatientenAufenthaltResources.Location;
-import Templates.PatientenAufenthaltResources.ReasonCode;
-import Templates.PatientenAufenthaltResources.ServiceType;
+import Templates.PatientenaufenthaltResources.Hospitalization;
+import Templates.PatientenaufenthaltResources.Location;
+import Templates.PatientenaufenthaltResources.ReasonCode;
+import Templates.PatientenaufenthaltResources.ServiceType;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.concurrent.ThreadLocalRandom;
 
-public class PatientenAufenthalt {
+public class Patientenaufenthalt {
 
-    public void CreatePatientenAufenthaltRescource (int number) throws IOException {
+    public void CreatePatientenaufenthaltRescource(int number) throws IOException {
 
-        FileWriter NewTemplate = new FileWriter("PatientenAufenthalt_Nr"+number+".json");
+        FileWriter NewTemplate = new FileWriter("Patientenaufenthalt_Nr"+number+".json");
 
         BufferedWriter writer = new BufferedWriter(NewTemplate);
 
         BasicWriteCommands.Open(writer);
 
-        CreatePatientenAufenthalt(writer);
+        CreatePatientenaufenthalt(writer);
 
         BasicWriteCommands.Close(writer);
 
@@ -29,7 +28,7 @@ public class PatientenAufenthalt {
 
     }
 
-    private void CreatePatientenAufenthalt (BufferedWriter writer) throws IOException {
+    private void CreatePatientenaufenthalt(BufferedWriter writer) throws IOException {
 
         /**
          * Header

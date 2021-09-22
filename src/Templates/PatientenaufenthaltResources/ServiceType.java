@@ -1,4 +1,4 @@
-package Templates.PatientenAufenthaltResources;
+package Templates.PatientenaufenthaltResources;
 
 import Generator.BasicWriteCommands;
 

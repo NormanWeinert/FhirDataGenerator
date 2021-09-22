@@ -1,10 +1,9 @@
-package Templates.PatientenAufenthaltResources;
+package Templates.PatientenaufenthaltResources;
 
 import Generator.BasicWriteCommands;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Location {
 

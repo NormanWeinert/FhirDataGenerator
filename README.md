@@ -16,4 +16,4 @@
  
  - Virologischer Befund
  - Impfstatus
- - PatientenAufenthalt
+ - Patientenaufenthalt
