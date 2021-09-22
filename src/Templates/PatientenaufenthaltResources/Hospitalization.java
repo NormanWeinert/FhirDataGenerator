@@ -130,13 +130,13 @@ public class Hospitalization {
 
         switch (randomNum) {
             case 1:
-                writer.write("\"code\": \"01\",");
+                writer.write("\"code\": \"019\",");
                 writer.newLine();
                 BasicWriteCommands.Indents(writer, 5);
                 writer.write("\"display\": \"Behandlung regulär beendet\"");
                 break;
             case 2:
-                writer.write("\"code\": \"02\",");
+                writer.write("\"code\": \"029\",");
                 writer.newLine();
                 BasicWriteCommands.Indents(writer, 5);
                 writer.write("\"display\": \"Behandlung regulär beendet, nachstationäre Behandlung vorgesehen\"");
@@ -154,43 +154,43 @@ public class Hospitalization {
                 writer.write("\"display\": \"Behandlung gegen ärztlichen Rat beendet\"");
                 break;
             case 5:
-                writer.write("\"code\": \"05\",");
+                writer.write("\"code\": \"059\",");
                 writer.newLine();
                 BasicWriteCommands.Indents(writer, 5);
                 writer.write("\"display\": \"Zuständigkeitswechsel des Kostenträgers\"");
                 break;
             case 6:
-                writer.write("\"code\": \"06\",");
+                writer.write("\"code\": \"069\",");
                 writer.newLine();
                 BasicWriteCommands.Indents(writer, 5);
                 writer.write("\"display\": \"Verlegung in ein anderes Krankenhaus\"");
                 break;
             case 7:
-                writer.write("\"code\": \"07\",");
+                writer.write("\"code\": \"079\",");
                 writer.newLine();
                 BasicWriteCommands.Indents(writer, 5);
                 writer.write("\"display\": \"Tod\"");
                 break;
             case 8:
-                writer.write("\"code\": \"08\",");
+                writer.write("\"code\": \"089\",");
                 writer.newLine();
                 BasicWriteCommands.Indents(writer, 5);
                 writer.write("\"display\": \"Verlegung in ein anderes Krankenhaus im Rahmen einer Zusammenarbeit (§ 14 Abs. 5 Satz 2 BPflV in der am 31.12.2003 geltenden Fassung)\"");
                 break;
             case 9:
-                writer.write("\"code\": \"09\",");
+                writer.write("\"code\": \"099\",");
                 writer.newLine();
                 BasicWriteCommands.Indents(writer, 5);
                 writer.write("\"display\": \"Entlassung in eine Rehabilitationseinrichtung\"");
                 break;
             case 10:
-                writer.write("\"code\": \"10\",");
+                writer.write("\"code\": \"109\",");
                 writer.newLine();
                 BasicWriteCommands.Indents(writer, 5);
                 writer.write("\"display\": \"Entlassung in eine Pflegeeinrichtung\"");
                 break;
             case 11:
-                writer.write("\"code\": \"11\",");
+                writer.write("\"code\": \"119\",");
                 writer.newLine();
                 BasicWriteCommands.Indents(writer, 5);
                 writer.write("\"display\": \"Entlassung in ein Hospiz\"");
