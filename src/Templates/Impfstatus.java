@@ -135,7 +135,7 @@ public class Impfstatus {
          * Status
          */
         BasicWriteCommands.Indents(writer,1);
-        CreateStatus(writer);
+        writer.write("\"status\": \"completed\",");
         writer.newLine();
 
         /**
@@ -213,22 +213,4 @@ public class Impfstatus {
         BasicWriteCommands.Indents(writer,1);
         BasicWriteCommands.CloseField(writer);
     }
-
-    private void CreateStatus (BufferedWriter writer) throws IOException {
-
-        int randomNum = ThreadLocalRandom.current().nextInt(1, 3 + 1);
-
-        switch (randomNum) {
-            case 1:
-                writer.write("\"status\": \"completed\",");
-                break;
-            case 2:
-                writer.write("\"status\": \"aborted\",");
-                break;
-            case 3:
-                writer.write("\"status\": \"active\",");
-                break;
-        }
-    }
-
 }
