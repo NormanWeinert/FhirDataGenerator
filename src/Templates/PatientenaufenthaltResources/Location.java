@@ -1,6 +1,7 @@
 package Templates.PatientenaufenthaltResources;
 
 import Generator.BasicWriteCommands;
+import Templates.SharedResources.SharedLocation;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -18,7 +19,7 @@ public class Location {
         writer.write("\"location\": {");
         writer.newLine();
         BasicWriteCommands.Indents(writer,4);
-        writer.write("\"reference\": \"http://external/Location/123\"");
+        SharedLocation.WriteLocation(writer);
         writer.newLine();
         BasicWriteCommands.Indents(writer,3);
         BasicWriteCommands.CloseAndContinue(writer);

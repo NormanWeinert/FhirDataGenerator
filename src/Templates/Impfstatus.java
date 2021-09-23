@@ -3,6 +3,7 @@ package Templates;
 import Generator.BasicWriteCommands;
 import Templates.ImpfstatusResources.Impfstoff;
 import Templates.ImpfstatusResources.ImpfungGegen;
+import Templates.SharedResources.SharedID;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -35,7 +36,7 @@ public class Impfstatus {
         writer.write("\"resourceType\": \"Immunization\",");
         writer.newLine();
         BasicWriteCommands.Indents(writer,1);
-        writer.write("\"id\": \"85bd2fab-256b-43d6-9671-4f97c1407d0f\",");
+        SharedID.WriteID(writer);
         writer.newLine();
         BasicWriteCommands.Indents(writer,1);
         writer.write("\"meta\": {");

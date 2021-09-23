@@ -1,38 +1,37 @@
 package Templates;
 
 import Generator.BasicWriteCommands;
-import Templates.PatientenaufenthaltResources.Hospitalization;
-import Templates.PatientenaufenthaltResources.Location;
-import Templates.PatientenaufenthaltResources.ReasonCode;
-import Templates.PatientenaufenthaltResources.ServiceType;
+import Templates.SharedResources.SharedServiceProvider;
+import Templates.StationaererVersorgungsfallResources.ReasonCode;
+import Templates.StationaererVersorgungsfallResources.Hospitalization;
+import Templates.StationaererVersorgungsfallResources.Location;
+import Templates.StationaererVersorgungsfallResources.ServiceType;
 import Templates.SharedResources.SharedDiagnosis;
 import Templates.SharedResources.SharedID;
-import Templates.SharedResources.SharedServiceProvider;
 import Templates.SharedResources.SharedStatus;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Patientenaufenthalt {
+public class StationaererVersorgungsfall {
 
-    public void CreatePatientenaufenthaltRescource(int number, int SerivceTypeCode, int HospitalizationAdmitSourceCode, int HospitalizationDischargeDipositionCode, int ReasonCodeCode, int StatusCode) throws IOException {
+    public void CreateStationaererVersorgungsfallRescource(int number, int SerivceTypeCode, int HospitalizationAdmitSourceCode, int HospitalizationDischargeDipositionCode, int ReasonCodeCode, int StatusCode) throws IOException {
 
-        FileWriter NewTemplate = new FileWriter("Patientenaufenthalt_Nr"+number+".json");
+        FileWriter NewTemplate = new FileWriter("StationaererVersorgungsfall_Nr"+number+".json");
 
         BufferedWriter writer = new BufferedWriter(NewTemplate);
 
         BasicWriteCommands.Open(writer);
 
-        CreatePatientenaufenthalt(writer,SerivceTypeCode,HospitalizationAdmitSourceCode,HospitalizationDischargeDipositionCode,ReasonCodeCode,StatusCode);
+        CreateStationaererVersorgungsfall(writer,SerivceTypeCode,HospitalizationAdmitSourceCode,HospitalizationDischargeDipositionCode,ReasonCodeCode,StatusCode);
 
         BasicWriteCommands.Close(writer);
 
         writer.close();
-
     }
 
-    private void CreatePatientenaufenthalt(BufferedWriter writer, int SerivceTypeCode, int HospitalizationAdmitSourceCode, int HospitalizationDischargeDipositionCode, int ReasonCodeCode, int StatusCode) throws IOException {
+    private void CreateStationaererVersorgungsfall(BufferedWriter writer, int SerivceTypeCode, int HospitalizationAdmitSourceCode, int HospitalizationDischargeDipositionCode, int ReasonCodeCode, int StatusCode) throws IOException {
 
         /**
          * Header
@@ -43,19 +42,6 @@ public class Patientenaufenthalt {
         BasicWriteCommands.Indents(writer,1);
         SharedID.WriteID(writer);
         writer.newLine();
-        BasicWriteCommands.Indents(writer,1);
-        writer.write("\"meta\": {");
-        writer.newLine();
-        BasicWriteCommands.Indents(writer,2);
-        writer.write("\"profile\": [");
-        writer.newLine();
-        BasicWriteCommands.Indents(writer,3);
-        writer.write("\"https://www.medizininformatik-initiative.de/fhir/core/modul-fall/StructureDefinition/KontaktGesundheitseinrichtung\"");
-        writer.newLine();
-        BasicWriteCommands.Indents(writer,2);
-        BasicWriteCommands.CloseField(writer);
-        BasicWriteCommands.Indents(writer,1);
-        BasicWriteCommands.CloseAndContinue(writer);
 
         /**
          * Identifier
@@ -121,50 +107,16 @@ public class Patientenaufenthalt {
         writer.write("\"class\": {");
         writer.newLine();
         BasicWriteCommands.Indents(writer,2);
-        writer.write("\"system\": \"https://www.medizininformatik-initiative.de/fhir/core/CodeSystem/EncounterClassAdditionsDE\",");
+        writer.write("\"system\": \"http://hl7.org/fhir/v3/ActCode/cs.html\",");
         writer.newLine();
         BasicWriteCommands.Indents(writer,2);
-        writer.write("\"code\": \"operation\",");
+        writer.write("\"code\": \"IMP\",");
         writer.newLine();
         BasicWriteCommands.Indents(writer,2);
-        writer.write("\"display\": \"Operation\"");
+        writer.write("\"display\": \"stationär\"");
         writer.newLine();
         BasicWriteCommands.Indents(writer,1);
         BasicWriteCommands.CloseAndContinue(writer);
-
-        /**
-         * Type
-         */
-        BasicWriteCommands.Indents(writer,1);
-        writer.write("\"type\": [");
-        writer.newLine();
-        BasicWriteCommands.Indents(writer,2);
-        BasicWriteCommands.Open(writer);
-        BasicWriteCommands.Indents(writer,3);
-        writer.write("\"coding\": [");
-        writer.newLine();
-        BasicWriteCommands.Indents(writer,4);
-        BasicWriteCommands.Open(writer);
-        BasicWriteCommands.Indents(writer,5);
-        writer.write("\"system\": \"https://www.medizininformatik-initiative.de/fhir/core/modul-fall/CodeSystem/Kontaktebene\",");
-        writer.newLine();
-        BasicWriteCommands.Indents(writer,5);
-        writer.write("\"code\": \"abteilungskontakt\",");
-        writer.newLine();
-        BasicWriteCommands.Indents(writer,5);
-        writer.write("\"display\": \"Abteilungskontakt\",");
-        writer.newLine();
-        BasicWriteCommands.Indents(writer,5);
-        writer.write("\"userSelected\": false");
-        writer.newLine();
-        BasicWriteCommands.Indents(writer,4);
-        BasicWriteCommands.Close(writer);
-        BasicWriteCommands.Indents(writer,3);
-        BasicWriteCommands.CloseField(writer);
-        BasicWriteCommands.Indents(writer,2);
-        BasicWriteCommands.Close(writer);
-        BasicWriteCommands.Indents(writer,1);
-        BasicWriteCommands.CloseAndContinueField(writer);
 
         /**
          * Subject
@@ -262,5 +214,4 @@ public class Patientenaufenthalt {
         BasicWriteCommands.Indents(writer,1);
         BasicWriteCommands.Close(writer);
     }
-
 }

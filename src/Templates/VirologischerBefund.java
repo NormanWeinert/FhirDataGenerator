@@ -1,6 +1,7 @@
 package Templates;
 
 import Generator.BasicWriteCommands;
+import Templates.SharedResources.SharedID;
 import Templates.VirologischerBefundResources.VirologischerBefundDiagnosticReport;
 import Templates.VirologischerBefundResources.VirologischerBefundObservation;
 import Templates.VirologischerBefundResources.VirologischerBefundSpecimen;
@@ -42,7 +43,7 @@ public class VirologischerBefund {
         writer.write("\"resourceType\": \"Bundle\",");
         writer.newLine();
         BasicWriteCommands.Indents(writer,1);
-        writer.write("\"id\": \"bundle-transaction-vb\",");
+        SharedID.WriteID(writer);
         writer.newLine();
         BasicWriteCommands.Indents(writer,1);
         writer.write("\"meta\": {");
