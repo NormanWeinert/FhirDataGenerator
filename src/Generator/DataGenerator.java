@@ -25,15 +25,23 @@ public class DataGenerator {
         Impfstatus Impfstatus = new Impfstatus();
         Patientenaufenthalt PatientenAufenthalt = new Patientenaufenthalt();
 
-        int SerivceTypeCode = CreateSerivceTypeCode();
-        int HospitalizationAdmitSourceCode = CreateHospitalizationAdmitSourceCode();
-        int HospitalizationDischargeDipositionCode = CreateHospitalizationDischargeDipositionCode();
-        int ReasonCodeCode = CreateReasonCodeCode();
-        
+        int SerivceTypeCode;
+        int HospitalizationAdmitSourceCode;
+        int HospitalizationDischargeDipositionCode;
+        int ReasonCodeCode;
+        int StatusCode;
+
         for (number = 1; number <= amount; number++){
+            
+            SerivceTypeCode = CreateSerivceTypeCode();
+            HospitalizationAdmitSourceCode = CreateHospitalizationAdmitSourceCode();
+            HospitalizationDischargeDipositionCode = CreateHospitalizationDischargeDipositionCode();
+            ReasonCodeCode = CreateReasonCodeCode();
+            StatusCode = CreateStatusCode();
+
             VirologischerBefund.CreateVirologischerBefundRescource(number);
             Impfstatus.CreateImpfstatusRescource(number);
-            PatientenAufenthalt.CreatePatientenaufenthaltRescource(number,SerivceTypeCode,HospitalizationAdmitSourceCode,HospitalizationDischargeDipositionCode,ReasonCodeCode);
+            PatientenAufenthalt.CreatePatientenaufenthaltRescource(number,SerivceTypeCode,HospitalizationAdmitSourceCode,HospitalizationDischargeDipositionCode,ReasonCodeCode,StatusCode);
         }
     }
 
@@ -63,6 +71,13 @@ public class DataGenerator {
     private static int CreateReasonCodeCode() {
 
         int randomNum = ThreadLocalRandom.current().nextInt(1, 9 + 1);
+
+        return randomNum;
+    }
+
+    private static int CreateStatusCode() {
+
+        int randomNum = ThreadLocalRandom.current().nextInt(1, 7 + 1);
 
         return randomNum;
     }

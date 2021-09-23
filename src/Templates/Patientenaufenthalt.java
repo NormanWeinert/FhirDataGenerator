@@ -7,6 +7,7 @@ import Templates.PatientenaufenthaltResources.ReasonCode;
 import Templates.PatientenaufenthaltResources.ServiceType;
 import Templates.SharedResources.SharedDiagnosis;
 import Templates.SharedResources.SharedServiceProvider;
+import Templates.SharedResources.SharedStatus;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -14,7 +15,7 @@ import java.io.IOException;
 
 public class Patientenaufenthalt {
 
-    public void CreatePatientenaufenthaltRescource(int number, int SerivceTypeCode, int HospitalizationAdmitSourceCode, int HospitalizationDischargeDipositionCode, int ReasonCodeCode) throws IOException {
+    public void CreatePatientenaufenthaltRescource(int number, int SerivceTypeCode, int HospitalizationAdmitSourceCode, int HospitalizationDischargeDipositionCode, int ReasonCodeCode, int StatusCode) throws IOException {
 
         FileWriter NewTemplate = new FileWriter("Patientenaufenthalt_Nr"+number+".json");
 
@@ -22,7 +23,7 @@ public class Patientenaufenthalt {
 
         BasicWriteCommands.Open(writer);
 
-        CreatePatientenaufenthalt(writer,SerivceTypeCode,HospitalizationAdmitSourceCode,HospitalizationDischargeDipositionCode,ReasonCodeCode);
+        CreatePatientenaufenthalt(writer,SerivceTypeCode,HospitalizationAdmitSourceCode,HospitalizationDischargeDipositionCode,ReasonCodeCode,StatusCode);
 
         BasicWriteCommands.Close(writer);
 
@@ -30,7 +31,7 @@ public class Patientenaufenthalt {
 
     }
 
-    private void CreatePatientenaufenthalt(BufferedWriter writer, int SerivceTypeCode, int HospitalizationAdmitSourceCode, int HospitalizationDischargeDipositionCode, int ReasonCodeCode) throws IOException {
+    private void CreatePatientenaufenthalt(BufferedWriter writer, int SerivceTypeCode, int HospitalizationAdmitSourceCode, int HospitalizationDischargeDipositionCode, int ReasonCodeCode, int StatusCode) throws IOException {
 
         /**
          * Header
@@ -109,7 +110,7 @@ public class Patientenaufenthalt {
          * Status
          */
         BasicWriteCommands.Indents(writer,1);
-        writer.write("\"status\": \"finished\",");
+        SharedStatus.StatusCases(writer,StatusCode);
         writer.newLine();
 
         /**
