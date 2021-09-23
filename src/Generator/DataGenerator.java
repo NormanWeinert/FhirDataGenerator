@@ -3,6 +3,7 @@ package Generator;
 import Templates.Impfstatus;
 import Templates.Patientenaufenthalt;
 import Templates.StationaererVersorgungsfall;
+import Templates.Symptom;
 import Templates.VirologischerBefund;
 
 import java.io.BufferedReader;
@@ -26,6 +27,7 @@ public class DataGenerator {
         Impfstatus Impfstatus = new Impfstatus();
         Patientenaufenthalt PatientenAufenthalt = new Patientenaufenthalt();
         StationaererVersorgungsfall StationaererVersorgungsfall = new StationaererVersorgungsfall();
+        Symptom Symptom = new Symptom();
 
         int SerivceTypeCode;
         int HospitalizationAdmitSourceCode;
@@ -45,6 +47,7 @@ public class DataGenerator {
             Impfstatus.CreateImpfstatusRescource(number);
             PatientenAufenthalt.CreatePatientenaufenthaltRescource(number,SerivceTypeCode,HospitalizationAdmitSourceCode,HospitalizationDischargeDipositionCode,ReasonCodeCode,StatusCode);
             StationaererVersorgungsfall.CreateStationaererVersorgungsfallRescource(number,SerivceTypeCode,HospitalizationAdmitSourceCode,HospitalizationDischargeDipositionCode,ReasonCodeCode,StatusCode);
+            Symptom.CreateSymptomRescource(number);
         }
     }
 
