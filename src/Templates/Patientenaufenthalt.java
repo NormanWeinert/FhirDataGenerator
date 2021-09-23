@@ -5,6 +5,8 @@ import Templates.PatientenaufenthaltResources.Hospitalization;
 import Templates.PatientenaufenthaltResources.Location;
 import Templates.PatientenaufenthaltResources.ReasonCode;
 import Templates.PatientenaufenthaltResources.ServiceType;
+import Templates.SharedResources.SharedDiagnosis;
+import Templates.SharedResources.SharedServiceProvider;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -12,7 +14,7 @@ import java.io.IOException;
 
 public class Patientenaufenthalt {
 
-    public void CreatePatientenaufenthaltRescource(int number) throws IOException {
+    public void CreatePatientenaufenthaltRescource(int number, int SerivceTypeCode, int HospitalizationAdmitSourceCode, int HospitalizationDischargeDipositionCode, int ReasonCodeCode) throws IOException {
 
         FileWriter NewTemplate = new FileWriter("Patientenaufenthalt_Nr"+number+".json");
 
@@ -20,7 +22,7 @@ public class Patientenaufenthalt {
 
         BasicWriteCommands.Open(writer);
 
-        CreatePatientenaufenthalt(writer);
+        CreatePatientenaufenthalt(writer,SerivceTypeCode,HospitalizationAdmitSourceCode,HospitalizationDischargeDipositionCode,ReasonCodeCode);
 
         BasicWriteCommands.Close(writer);
 
@@ -28,7 +30,7 @@ public class Patientenaufenthalt {
 
     }
 
-    private void CreatePatientenaufenthalt(BufferedWriter writer) throws IOException {
+    private void CreatePatientenaufenthalt(BufferedWriter writer, int SerivceTypeCode, int HospitalizationAdmitSourceCode, int HospitalizationDischargeDipositionCode, int ReasonCodeCode) throws IOException {
 
         /**
          * Header
@@ -194,7 +196,7 @@ public class Patientenaufenthalt {
         writer.write("\"condition\": {");
         writer.newLine();
         BasicWriteCommands.Indents(writer,4);
-        writer.write("\"reference\": \"http://external/Condition/123\"");
+        SharedDiagnosis.WriteDiagnosis(writer);
         writer.newLine();
         BasicWriteCommands.Indents(writer,3);
         BasicWriteCommands.Close(writer);
@@ -221,12 +223,12 @@ public class Patientenaufenthalt {
         /**
          * ReasonCode
          */
-        ReasonCode.CreateReasonCode(writer);
+        ReasonCode.CreateReasonCode(writer, ReasonCodeCode);
 
         /**
          * Hospitalization
          */
-        Hospitalization.CreateHospitalization(writer);
+        Hospitalization.CreateHospitalization(writer, HospitalizationAdmitSourceCode, HospitalizationDischargeDipositionCode);
 
         /**
          * Location
@@ -236,7 +238,7 @@ public class Patientenaufenthalt {
         /**
          * ServiceType
          */
-        ServiceType.CreateServiceType(writer);
+        ServiceType.CreateServiceType(writer, SerivceTypeCode);
 
         /**
          * ServiceProvider
@@ -248,10 +250,10 @@ public class Patientenaufenthalt {
         writer.write("\"identifier\": {");
         writer.newLine();
         BasicWriteCommands.Indents(writer,3);
-        writer.write("\"system\": \"http://medizininformatik-initiative.de/fhir/NamingSystem/Abteilungsidentifikator/MusterKrankenhaus\",");
+        SharedServiceProvider.WriteServiceProviderSystem(writer);
         writer.newLine();
         BasicWriteCommands.Indents(writer,3);
-        writer.write("\"value\": \"1500_ACHI\"");
+        SharedServiceProvider.WriteServiceProviderValue(writer);
         writer.newLine();
         BasicWriteCommands.Indents(writer,2);
         BasicWriteCommands.Close(writer);
