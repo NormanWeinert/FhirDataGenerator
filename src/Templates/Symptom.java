@@ -2,7 +2,9 @@ package Templates;
 
 import Generator.BasicWriteCommands;
 import Templates.SharedResources.SharedID;
+import Templates.SymptomResources.ClinicalStatus;
 import Templates.SymptomResources.Code;
+import Templates.SymptomResources.Severity;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -74,6 +76,13 @@ public class Symptom {
         WriteCategory(writer);
 
         /**
+         * ClinicalStatus
+         */
+        if (Case == 1 || Case == 2){
+            WriteClinicalStatus(writer);
+        }
+
+        /**
          * Code
          */
         WriteCode(writer);
@@ -84,10 +93,15 @@ public class Symptom {
         BasicWriteCommands.Indents(writer,1);
         writer.write("\"recordedDate\": \"2020-10-05\",");
         writer.newLine();
-        if (Case == 3 || Case == 4) {
-            BasicWriteCommands.Indents(writer, 1);
-            writer.write("\"onsetDateTime\": \"2020-10-05\",");
-            writer.newLine();
+        BasicWriteCommands.Indents(writer, 1);
+        writer.write("\"onsetDateTime\": \"2020-10-05\",");
+        writer.newLine();
+
+        /**
+         * Severity
+         */
+        if (Case == 1 || Case == 2){
+            WriteSeverity(writer);
         }
 
         /**
@@ -110,6 +124,29 @@ public class Symptom {
         if (Case == 3 || Case == 4) {
             WriteRecorder(writer);
         }
+    }
+
+    private void WriteClinicalStatus(BufferedWriter writer) throws IOException {
+
+        BasicWriteCommands.Indents(writer,1);
+        writer.write("\"clinicalStatus\": {");
+        writer.newLine();
+        BasicWriteCommands.Indents(writer,2);
+        writer.write("\"coding\": [");
+        writer.newLine();
+        BasicWriteCommands.Indents(writer,3);
+        BasicWriteCommands.Open(writer);
+        ClinicalStatus.CreateClinicalStatusCode(writer);
+        writer.newLine();
+        BasicWriteCommands.Indents(writer,4);
+        writer.write("\"system\": \"http://terminology.hl7.org/CodeSystem/condition-clinical\"");
+        writer.newLine();
+        BasicWriteCommands.Indents(writer,3);
+        BasicWriteCommands.Close(writer);
+        BasicWriteCommands.Indents(writer,2);
+        BasicWriteCommands.CloseField(writer);
+        BasicWriteCommands.Indents(writer,1);
+        BasicWriteCommands.CloseAndContinue(writer);
     }
 
     private void CreateSymptomUnknown(BufferedWriter writer) throws IOException {
@@ -235,6 +272,30 @@ public class Symptom {
         BasicWriteCommands.CloseField(writer);
         BasicWriteCommands.Indents(writer,1);
         BasicWriteCommands.CloseAndContinue(writer);
+    }
+
+    private void WriteSeverity(BufferedWriter writer) throws IOException {
+
+        BasicWriteCommands.Indents(writer,1);
+        writer.write("\"severity\": {");
+        writer.newLine();
+        BasicWriteCommands.Indents(writer,2);
+        writer.write("\"coding\": [");
+        writer.newLine();
+        BasicWriteCommands.Indents(writer,3);
+        BasicWriteCommands.Open(writer);
+        Severity.CreateSeverity(writer);
+        writer.newLine();
+        BasicWriteCommands.Indents(writer,4);
+        writer.write("\"system\": \"http://snomed.info/sct\"");
+        writer.newLine();
+        BasicWriteCommands.Indents(writer,3);
+        BasicWriteCommands.Close(writer);
+        BasicWriteCommands.Indents(writer,2);
+        BasicWriteCommands.CloseField(writer);
+        BasicWriteCommands.Indents(writer,1);
+        BasicWriteCommands.CloseAndContinue(writer);
+
     }
 
     private void WriteSubject(BufferedWriter writer) throws IOException {

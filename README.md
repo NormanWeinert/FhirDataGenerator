@@ -17,3 +17,5 @@
  - Virologischer Befund
  - Impfstatus
  - Patientenaufenthalt
+ - Stationaerer Versorgungsfall
+ - Symptom
