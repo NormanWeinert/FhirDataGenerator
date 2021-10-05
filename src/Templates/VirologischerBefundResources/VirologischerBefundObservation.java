@@ -357,7 +357,7 @@ public class VirologischerBefundObservation {
     private static void Nachweis (BufferedWriter writer) throws IOException {
 
         BasicWriteCommands.Indents(writer,7);
-        writer.write("\"system\": \"http://loinc.org\",");
+        writer.write("\"system\": \"http://snomed.info/sct\",");
         writer.newLine();
         BasicWriteCommands.Indents(writer,7);
 

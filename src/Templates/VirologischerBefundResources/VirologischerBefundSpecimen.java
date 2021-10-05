@@ -146,6 +146,9 @@ public class VirologischerBefundSpecimen {
     private static void NameDerKoerperstelle (BufferedWriter writer) throws IOException {
 
         BasicWriteCommands.Indents(writer,8);
+        writer.write("\"system\": \"http://snomed.info/sct\",");
+        writer.newLine();
+        BasicWriteCommands.Indents(writer,8);
 
         int randomNum = ThreadLocalRandom.current().nextInt(1, 8 + 1);
 
