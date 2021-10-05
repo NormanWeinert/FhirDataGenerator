@@ -123,9 +123,6 @@ public class VirologischerBefundObservation {
         BasicWriteCommands.Indents(writer,7);
         BasicWriteCommands.Open(writer);
         BasicWriteCommands.Indents(writer,8);
-        writer.write("\"system\": \"http://loinc.org\",");
-        writer.newLine();
-        BasicWriteCommands.Indents(writer,8);
         writer.write("\"code\": \"122442008\",");
         writer.newLine();
         BasicWriteCommands.Indents(writer,8);
