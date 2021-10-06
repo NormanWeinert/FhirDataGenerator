@@ -285,6 +285,9 @@ public class VirologischerBefundObservation {
     private static void Virusnachweistest (BufferedWriter writer) throws IOException {
 
         BasicWriteCommands.Indents(writer,7);
+        writer.write("\"system\": \"http://loinc.org\",");
+        writer.newLine();
+        BasicWriteCommands.Indents(writer,7);
 
         int randomNum = ThreadLocalRandom.current().nextInt(1, 3 + 1);
 
